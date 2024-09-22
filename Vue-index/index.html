@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Learning vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <h1>Vue</h1>
+    <div id="app"> 
+
+        <div v-if="showBooks"> <!--conditionally makes the div visible by using
+             v-if="true/false" just put the v directive 
+             inside the opening div tag  // you can access the variable form the data function inside an opening div tag by just putting its name on the parameter-->
+        <h2>{{title}}, {{author}},{{age}}</h2> <!-- we will manipulate the content of h2 with vue for dynamic data-->
+    <!-- to return the value on the function from vue -> {{[variablename]}}-->
+    <!-- <button v-on:click="age++">Increase Age</button> v-on allows us to react on different types of events
+     <button v-on:click="age--">Decrease Age</button>
+     <div @click="changeTitle">Change</div> shortcut of v-on. Calls upon changeTitle() function from app js // you can call the function from method without (), but you can pass 
+     values when functions are call with () ex. changeTitle('Oath') just add a parameter that will be accessed inside the function/method
+   [COMMENTED OUT DUE TO BEING REMOVED GOING FORWARD THE TUTORIAL- DOCUMENTATION PURPOSE/NOTES] -->
+        </div>   
+        <button @click="toggleBooks">
+            <span v-if="showBooks">Hide Books</span> <!--shows when the value is true and vice versa on the second-->
+            <span v-else>Show Books</span> <!--if else using v directive-->             
+        </button>
+
+        <!--v directive to show a div conditionally-->
+        <div v-show="showBooks">Toggled</div> <!--v-if completely removing the injected element when toggled to false while v-show only hides it using css-->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
