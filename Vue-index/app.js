@@ -10,6 +10,15 @@ const app = Vue.createApp({
       title: "The Final Empire",
       author: "Brandon Sanderson",
       age: 45,
+      x: 0,
+      y: 0,
+      books: [
+        //for list output
+        { title: "book 1", author: "author 1" },
+        { title: "book 2", author: "author 2" },
+        { title: "book 3", author: "author 3" },
+      ],
+      url: "https://www.facebook.com",
     };
   },
   methods: {
@@ -20,6 +29,13 @@ const app = Vue.createApp({
     },
     toggleBooks() {
       this.showBooks = !this.showBooks; // to toggle on and off put ! in form of the variable since it is a not symbol
+    }, //episode 3
+    handleEvent(e) {
+      console.log(e);
+    },
+    handleMouse(e) {
+      this.x = e.offsetX; // event property
+      this.y = e.offsetY;
     },
   },
 }); // use of the view library to create the app

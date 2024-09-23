@@ -6,6 +6,16 @@
     , initial-scale=1.0">
     <title>Learning vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding:100px 0;
+            width: 400px;
+            text-align:  center;
+            background-color: blueviolet;
+            margin: 20px;
+            display:  inline-block;
+        }
+    </style>
 </head>
 <body>
     <h1>Vue</h1>
@@ -29,6 +39,28 @@
 
         <!--v directive to show a div conditionally-->
         <div v-show="showBooks">Toggled</div> <!--v-if completely removing the injected element when toggled to false while v-show only hides it using css-->
+    <br>
+    <!--ep3 Vue.js basics // shorthand for event listener -> @ + eventlister-->
+    <div class="box" @mouseover="handleEvent">Mouseover (enters the box)</div> <!--to pass custom parameter and the event at the same time do: handleEvent($event,param)-->
+    <div class="box" @mouseleave="handleEvent">Mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMouse">mouse move {{x}} {{y}}</div>
+
+    <br>
+        <!--outputting lists-->
+      <div>
+        <ul>
+            <li v-for="book in books"> <!-- to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+                <h3>{{book.title}}</h3>
+                <p>{{book.author}}</p>
+            </li>
+        </ul>
+      </div>
+
+      <!--attribute binding // href is an attribute, to create this dynamic we create a data property on data function on appjs, then use this format -> v-bind:href="url"-->
+      <!--attribute binding allows the value of data to be read by the attributes instead of being just a word e.g url be read as url instead of its value in data function-->
+       <br>
+       <a v-bind:href="url">click here</a> <!-- shotcut is just :href-->
     </div>
     <script src="app.js"></script>
 </body>
