@@ -15,6 +15,36 @@
             margin: 20px;
             display:  inline-block;
         }
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        li{
+            list-style: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: flex;
+            margin: 20px auto;
+            background: #fff;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+        .img {
+            height: 100px;
+            width: 100px;
+        }
+        p,h3,ul{
+            padding: 0;
+            margin: 0;
+        }
+        li.fav{
+            background:#CBC3E3 ;
+        }
+        .bookContainers{
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
@@ -49,14 +79,24 @@
     <br>
         <!--outputting lists-->
       <div>
-        <ul>
-            <li v-for="book in books"> <!-- to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+        <ul  class="bookContainer"><!--conditional class below where fav class will be assigned if book.isFav is true-->
+            <li v-for="(book,index) in books" :class="{fav: book.isFav}"  @click="toggleFav(book)"> <!-- serves as the for loop/loop container // to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+                <img :src="book.img" alt="book.title" class="img"> <!--attribute bind the src to read the directory-->
                 <h3>{{book.title}}</h3>
                 <p>{{book.author}}</p>
             </li>
         </ul>
       </div>
-
+    <!--accessing filtered books-->
+    <div>
+        <ul  class="bookContainers"><!--conditional class below where fav class will be assigned if book.isFav is true-->
+            <li v-for="book in filteredBooks" :class="{fav: book.isFav}"  @click="toggleFav(book)"> <!-- serves as the for loop/loop container // to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+                <img :src="book.img" alt="book.title" class="img"> <!--attribute bind the src to read the directory-->
+                <h3>{{book.title}}</h3>
+                <p>{{book.author}}</p>
+            </li>
+        </ul>
+      </div>
       <!--attribute binding // href is an attribute, to create this dynamic we create a data property on data function on appjs, then use this format -> v-bind:href="url"-->
       <!--attribute binding allows the value of data to be read by the attributes instead of being just a word e.g url be read as url instead of its value in data function-->
        <br>

@@ -14,9 +14,24 @@ const app = Vue.createApp({
       y: 0,
       books: [
         //for list output
-        { title: "book 1", author: "author 1" },
-        { title: "book 2", author: "author 2" },
-        { title: "book 3", author: "author 3" },
+        {
+          title: "book 1",
+          author: "author 1",
+          img: "assets/1.jfif",
+          isFav: true,
+        },
+        {
+          title: "book 2",
+          author: "author 2",
+          img: "assets/2.jfif",
+          isFav: false,
+        },
+        {
+          title: "book 3",
+          author: "author 3",
+          img: "assets/3.jfif",
+          isFav: true,
+        },
       ],
       url: "https://www.facebook.com",
     };
@@ -36,6 +51,15 @@ const app = Vue.createApp({
     handleMouse(e) {
       this.x = e.offsetX; // event property
       this.y = e.offsetY;
+    },
+    toggleFav(book) {
+      book.isFav = !book.isFav; // you need to pass the value to change it, no need for index to access the array
+    },
+  },
+
+  computed: {
+    filteredBooks() {
+      return this.books.filter((book) => book.isFav); //filter function checks the conditions and when returned true puts the item on the array // makes us able to access the values in index
     },
   },
 }); // use of the view library to create the app
