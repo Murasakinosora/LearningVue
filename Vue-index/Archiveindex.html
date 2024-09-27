@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Learning vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding:100px 0;
+            width: 400px;
+            text-align:  center;
+            background-color: blueviolet;
+            margin: 20px;
+            display:  inline-block;
+        }
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        li{
+            list-style: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: flex;
+            margin: 20px auto;
+            background: #fff;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+        .img {
+            height: 100px;
+            width: 100px;
+        }
+        p,h3,ul{
+            padding: 0;
+            margin: 0;
+        }
+        li.fav{
+            background:#CBC3E3 ;
+        }
+        .bookContainers{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue</h1>
+    <div id="app"> 
+
+        <div v-if="showBooks"> <!--conditionally makes the div visible by using
+             v-if="true/false" just put the v directive 
+             inside the opening div tag  // you can access the variable form the data function inside an opening div tag by just putting its name on the parameter-->
+        <h2>{{title}}, {{author}},{{age}}</h2> <!-- we will manipulate the content of h2 with vue for dynamic data-->
+    <!-- to return the value on the function from vue -> {{[variablename]}}-->
+    <!-- <button v-on:click="age++">Increase Age</button> v-on allows us to react on different types of events
+     <button v-on:click="age--">Decrease Age</button>
+     <div @click="changeTitle">Change</div> shortcut of v-on. Calls upon changeTitle() function from app js // you can call the function from method without (), but you can pass 
+     values when functions are call with () ex. changeTitle('Oath') just add a parameter that will be accessed inside the function/method
+   [COMMENTED OUT DUE TO BEING REMOVED GOING FORWARD THE TUTORIAL- DOCUMENTATION PURPOSE/NOTES] -->
+        </div>   
+        <button @click="toggleBooks">
+            <span v-if="showBooks">Hide Books</span> <!--shows when the value is true and vice versa on the second-->
+            <span v-else>Show Books</span> <!--if else using v directive-->             
+        </button>
+
+        <!--v directive to show a div conditionally-->
+        <div v-show="showBooks">Toggled</div> <!--v-if completely removing the injected element when toggled to false while v-show only hides it using css-->
+    <br>
+    <!--ep3 Vue.js basics // shorthand for event listener -> @ + eventlister-->
+    <div class="box" @mouseover="handleEvent">Mouseover (enters the box)</div> <!--to pass custom parameter and the event at the same time do: handleEvent($event,param)-->
+    <div class="box" @mouseleave="handleEvent">Mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMouse">mouse move {{x}} {{y}}</div>
+
+    <br>
+        <!--outputting lists-->
+      <div>
+        <ul  class="bookContainer"><!--conditional class below where fav class will be assigned if book.isFav is true-->
+            <li v-for="(book,index) in books" :class="{fav: book.isFav}"  @click="toggleFav(book)"> <!-- serves as the for loop/loop container // to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+                <img :src="book.img" alt="book.title" class="img"> <!--attribute bind the src to read the directory-->
+                <h3>{{book.title}}</h3>
+                <p>{{book.author}}</p>
+            </li>
+        </ul>
+      </div>
+    <!--accessing filtered books-->
+    <div>
+        <ul  class="bookContainers"><!--conditional class below where fav class will be assigned if book.isFav is true-->
+            <li v-for="book in filteredBooks" :class="{fav: book.isFav}"  @click="toggleFav(book)"> <!-- serves as the for loop/loop container // to cycle through arrays use v-for and access the elements by using the assigned parameter for calling the index being cycled through in which in this instance is book-->
+                <img :src="book.img" alt="book.title" class="img"> <!--attribute bind the src to read the directory-->
+                <h3>{{book.title}}</h3>
+                <p>{{book.author}}</p>
+            </li>
+        </ul>
+      </div>
+      <!--attribute binding // href is an attribute, to create this dynamic we create a data property on data function on appjs, then use this format -> v-bind:href="url"-->
+      <!--attribute binding allows the value of data to be read by the attributes instead of being just a word e.g url be read as url instead of its value in data function-->
+       <br>
+       <a v-bind:href="url">click here</a> <!-- shotcut is just :href-->
+
+       
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
