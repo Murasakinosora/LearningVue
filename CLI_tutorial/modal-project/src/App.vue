@@ -14,6 +14,7 @@
         <template v-slot:links>
           <a href="#">sign up now</a>
           <a href="#">more info</a>
+          <p></p>
           <button v-if="showbutton" @click="modalClickTwo">
             Show Modal Two
           </button>
@@ -31,6 +32,7 @@
         <template v-slot:links>
           <a href="#">sign up now</a>
           <a href="#">more info</a>
+          <p></p>
           <button v-if="showModalTwo" @click="modalClickTwo">
             Show Modal One
           </button>

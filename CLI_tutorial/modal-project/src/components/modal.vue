@@ -80,6 +80,11 @@ export default {
   color: white;
 }
 
+.modal.sale button {
+  color: white;
+  background: crimson;
+  border: 1px solid white;
+}
 .modal.second {
   background: lightgreen;
   color: purple;
@@ -87,6 +92,12 @@ export default {
 
 .modal.second h1 {
   color: purple;
+}
+
+.modal.second button {
+  color: purple;
+  background: lightgreen;
+  border: 1px solid white;
 }
 .modal.actions {
   text-align: center;
@@ -96,14 +107,26 @@ export default {
 
 .modal .actions a {
   color: white;
-  padding: 8px;
+  padding: 7px;
   border: 1px solid white;
   border-radius: 4px;
   text-decoration: none;
-  margin: 10px;
+  margin: 8px;
 }
 .modal.actions button {
   z-index: 1000;
   position: relative;
+}
+
+.modal button {
+  border-radius: 10px;
+  height: 40px;
+  width: 210px;
+}
+
+.modal.second a {
+  color: purple;
+  background: lightgreen;
+  border: 1px solid white;
 }
 </style>
