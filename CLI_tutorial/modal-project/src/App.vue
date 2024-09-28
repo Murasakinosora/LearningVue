@@ -6,13 +6,7 @@
     <button @click="handleClick">click me</button>
 
     <div v-if="showModal">
-      <Modal
-        :header="header"
-        :text="text"
-        :theme="theme"
-        @close="modalClick"
-        @tap="handleSecond"
-      >
+      <Modal :header="header" :text="text" :theme="theme" @close="modalClick">
         <!--changed modal format to use slots-->
         <h1>Giveaway</h1>
         <p>using slots</p>
@@ -20,9 +14,28 @@
         <template v-slot:links>
           <a href="#">sign up now</a>
           <a href="#">more info</a>
+          <button v-if="showbutton" @click="modalClickTwo">
+            Show Modal Two
+          </button>
         </template>
       </Modal>
       <!--receiving the emitted event listener on @close-->
+    </div>
+
+    <div v-if="showModalTwo">
+      <Modal header="Modal Two" text="display" theme="second">
+        <!--changed modal format to use slots-->
+        <h1>Modal Two</h1>
+        <p>using slots</p>
+        <!--creating a named slot-->
+        <template v-slot:links>
+          <a href="#">sign up now</a>
+          <a href="#">more info</a>
+          <button v-if="showModalTwo" @click="modalClickTwo">
+            Show Modal One
+          </button>
+        </template>
+      </Modal>
     </div>
 
     <button @click="modalClick">Show Modal</button>
@@ -54,6 +67,7 @@ export default {
       theme: "sale",
       showModal: false,
       showModalTwo: false,
+      showbutton: true,
     };
   },
   methods: {
@@ -63,6 +77,11 @@ export default {
     },
     modalClick() {
       this.showModal = !this.showModal;
+    },
+    modalClickTwo() {
+      this.showModal = !this.showModal;
+      this.showModalTwo = !this.showModalTwo;
+      this.showbutton = !this.showbutton;
     },
   },
 };

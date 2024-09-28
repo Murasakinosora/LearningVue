@@ -1,13 +1,16 @@
 <template>
   <div class="backdrop" @click.self="closeModal">
     <!--event modifier syntax: @click.[choose event modifier] in this case @click.self only fires the event listener when the exact element is clicked-->
-    <div class="modal" :class="{ sale: theme === 'sale' }">
+    <div
+      class="modal"
+      :class="{ sale: theme === 'sale', second: theme === 'second' }"
+    >
       <!--class sale will be assigned if theme === 'sale'-->
       <!--conditional classes allows you to create various themes-->
 
       <!--Passed header value from modal element on App.vue-->
       <h1>{{ header }}</h1>
-      <p>modal content</p>
+      <p>{{ text }}</p>
       <!--renders the passed value on the modal element found inside app.vue-->
       <slot></slot>
       <div class="actions">
@@ -35,6 +38,10 @@ export default {
   methods: {
     closeModal() {
       this.$emit("close"); // custom event emits an event listener that can be listed to on the parent component which is App.vue by assigning @close on the modal element
+    },
+    modalClickTwo() {
+      console.log("true");
+      this.emit("two");
     },
   },
 };
@@ -73,6 +80,14 @@ export default {
   color: white;
 }
 
+.modal.second {
+  background: lightgreen;
+  color: purple;
+}
+
+.modal.second h1 {
+  color: purple;
+}
 .modal.actions {
   text-align: center;
   margin: 30px 0 10px 0;
