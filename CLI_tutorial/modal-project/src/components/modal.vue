@@ -26,15 +26,7 @@
 //creating prop for header that is passed on the modal found on App.vue
 //props are reusable as one source of truth
 export default {
-  props: {
-    header: String,
-    text: String,
-    theme: String,
-    showbutton: {
-      type: Boolean,
-      default: true, // Button will be visible by default unless specified
-    },
-  },
+  props: ["header", "text", "theme"],
   methods: {
     closeModal() {
       this.$emit("close"); // custom event emits an event listener that can be listed to on the parent component which is App.vue by assigning @close on the modal element
