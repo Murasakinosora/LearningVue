@@ -53,6 +53,9 @@
       <Block v-if="isPlaying" :delay="delay" @end="catchEnd" />
       <Results :reaction="score" v-if="showResults" />
     </div>
+
+    <!--Form & inputs-->
+    <Forms />
   </div>
 </template>
 <!--
@@ -68,11 +71,11 @@ To reference the input field on the event handler use this.$refs.refName
 import Modal from "./components/modal.vue";
 import Block from "./components/Block.vue";
 import Results from "./components/Results.vue";
-
+import Forms from "./components/Form.vue";
 //export is the same with the app.js which contained data,methods, and computed
 export default {
   name: "App",
-  components: { Modal, Block, Results },
+  components: { Modal, Block, Results, Forms },
   data() {
     return {
       title: "First App",
