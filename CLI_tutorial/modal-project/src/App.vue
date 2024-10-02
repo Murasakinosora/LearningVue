@@ -5,9 +5,15 @@
       <div class="test">
         <router-link to="/">Home</router-link>
         <router-link :to="{ name: 'About' }">About</router-link>
+        <router-link :to="{ name: 'Jobs' }">Jobs</router-link>
         <!--data binded the name value for ease of editing in the future-->
       </div>
     </div>
+
+    <button @click="red">Redirect</button>
+    <button @click="gob">Go back</button>
+    <button @click="forw">Forward</button>
+
     <router-view />
   </div>
 </template>
@@ -24,6 +30,19 @@ To reference the input field on the event handler use this.$refs.refName
 export default {
   data() {
     return {};
+  },
+  methods: {
+    red() {
+      //pushing a new route to redirect using the same format on router-link
+      this.$router.push({ name: "Home" });
+    },
+    //$router is used when we want to move from page to page, $route is used to access details of the current route
+    gob() {
+      this.$router.go(-1); // negative number means go back -1 page on history
+    },
+    forw() {
+      this.$router.go(+1);
+    },
   },
 };
 </script>
@@ -61,5 +80,11 @@ h1 {
 }
 body {
   margin: 0;
+}
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
 }
 </style>

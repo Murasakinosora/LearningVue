@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue"; // Example component
 import About from "../views/About.vue"; // Example component
-
+import Jobs from "../views/jobs/Jobs.vue";
+import JobDetails from "../views/jobs/JobDetails.vue";
+import Notfound from "../views/404.vue";
 const routes = [
   {
     path: "/",
@@ -12,6 +14,30 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/jobs",
+    name: "Jobs",
+    component: Jobs,
+  },
+  {
+    //no matter the id, this route will show the job details component
+    path: "/jobs/:id",
+    name: "JobDetails",
+    component: JobDetails,
+    // when params are use on v-binded :to we can receive the params as a prop on the component receiving it
+    props: true,
+  },
+  //redirect
+  {
+    path: "/all-jobs",
+    redirect: "/jobs",
+  },
+  //catchall 404 , patch catches everything that does not match all routes before it
+  {
+    path: "/:catchAll(.*)",
+    name: "404",
+    component: Notfound,
   },
 ];
 
