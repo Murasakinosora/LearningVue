@@ -23,7 +23,7 @@ const routes = [
   {
     //no matter the id, this route will show the job details component
     //you need to put the params in the path for it to be accepted when passing multiple params on a router link
-    path: "/jobs/:id/:description",
+    path: "/jobs/:id/:description/:title",
     name: "JobDetails",
     component: JobDetails,
     // when params are use on v-binded :to we can receive the params as a prop on the component receiving it

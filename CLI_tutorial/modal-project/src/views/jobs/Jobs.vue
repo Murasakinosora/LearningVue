@@ -6,7 +6,11 @@
       <router-link
         :to="{
           name: 'JobDetails',
-          params: { id: job.id, description: job.description },
+          params: {
+            id: job.id,
+            description: job.description,
+            title: job.title,
+          },
         }"
         class="job"
       >
@@ -23,7 +27,7 @@
       <router-link
         :to="{
           name: 'JobDetails',
-          params: { id: js.id, description: js.description },
+          params: { id: js.id, description: js.description, title: js.title },
         }"
         class="job"
       >
