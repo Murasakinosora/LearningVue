@@ -13,6 +13,23 @@
         <h1>{{ job.title }}</h1>
       </router-link>
     </div>
+
+    <!--fetching data from json-->
+    <p>Fetching from JSON</p>
+
+    <div v-for="js in json" :key="js.id">
+      <!--Adding params on the attributed binded to allows us to direct to the right link/rout eg /job/[id]-->
+      <!---->
+      <router-link
+        :to="{
+          name: 'JobDetails',
+          params: { id: js.id, description: js.description },
+        }"
+        class="job"
+      >
+        <h1>{{ js.title }}</h1>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -37,7 +54,20 @@ export default {
           description: "lorem3",
         },
       ],
+      json: [],
     };
+  },
+  //mounted life-cycle hook
+  mounted() {
+    //fetches the data when the component is mounted on the dom
+    //uses fetch api
+    fetch("http://localhost:3000/jobs") // / [resource name/ object name]
+      .then((response) => {
+        response
+          .json()
+          .then((data) => (this.json = data))
+          .catch((err) => console.log(err.message));
+      });
   },
 };
 </script>
