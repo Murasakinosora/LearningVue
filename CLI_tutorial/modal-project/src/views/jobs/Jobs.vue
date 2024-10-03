@@ -6,7 +6,7 @@
       <router-link
         :to="{
           name: 'JobDetails',
-          params: { id: job.id },
+          params: { id: job.id, description: job.description },
         }"
         class="job"
       >
@@ -24,17 +24,17 @@ export default {
         {
           title: "Developer",
           id: 1,
-          description: "lorem",
+          description: "lorem1",
         },
         {
           title: "Designer",
           id: 2,
-          description: "lorem",
+          description: "lorem2",
         },
         {
           title: "Senior Developer",
           id: 3,
-          description: "lorem",
+          description: "lorem3",
         },
       ],
     };
