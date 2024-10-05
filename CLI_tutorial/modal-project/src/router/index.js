@@ -4,6 +4,8 @@ import About from "../views/About.vue"; // Example component
 import Jobs from "../views/jobs/Jobs.vue";
 import JobDetails from "../views/jobs/JobDetails.vue";
 import Notfound from "../views/404.vue";
+import Blog from "../views/Blog.vue";
+
 const routes = [
   {
     path: "/",
@@ -28,6 +30,11 @@ const routes = [
     component: JobDetails,
     // when params are use on v-binded :to we can receive the params as a prop on the component receiving it
     props: true,
+  },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: Blog,
   },
   //redirect
   {

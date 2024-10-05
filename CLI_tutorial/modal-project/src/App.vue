@@ -6,6 +6,7 @@
         <router-link to="/">Home</router-link>
         <router-link :to="{ name: 'About' }">About</router-link>
         <router-link :to="{ name: 'Jobs' }">Jobs</router-link>
+        <router-link :to="{ name: 'Blog' }">Blogs</router-link>
         <!--data binded the name value for ease of editing in the future-->
       </div>
     </div>
@@ -63,12 +64,13 @@ h1 {
 
 .nav {
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
 .test {
-  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
-  width: 10vw;
+  justify-content: center;
+  margin: 10px auto;
 }
 .nav a {
   font-weight: bold;
